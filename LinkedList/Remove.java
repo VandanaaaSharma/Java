@@ -1,4 +1,4 @@
-import java.util.*;
+
 public class Remove {
         class Node {
             int data;
@@ -34,6 +34,30 @@ public class Remove {
             }
             return val;
         }
+        public static int size;
+        public int removeLast() {
+            if(size==0){
+                System.out.println("empty");
+                return Integer.MIN_VALUE;
+                
+            } else if(size==1){
+                int val=head.data;
+                head=tail=null;
+                return val;
+
+
+            }
+            Node prev=head;
+            for(int i=0;i<size-1;i++){
+                prev=prev.next;
+            }
+            int val=prev.next.data;
+            prev.next=null;
+            tail=prev;
+            size--;
+            return val;
+
+        }
         public void printList() {
             Node temp = head;
             while (temp != null) {
@@ -42,6 +66,7 @@ public class Remove {
             }
             System.out.println("null");
         }
+        
         public static void main(String[] args) {
             Remove list = new Remove();
             list.addFirst(5);
@@ -52,6 +77,8 @@ public class Remove {
             
             list.printList();
             System.out.println("Removed: " + list.removeFirst());
+        list.printList();
+        System.out.println("Removed: " + list.removeLast());
         list.printList();
         }
 
