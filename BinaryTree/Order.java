@@ -25,7 +25,7 @@ public class Order {
             return newNode;
         }
     }
-
+      
     // Corrected method: changed return type from int to void
     public static void preOrder(Node root) {
         if (root == null) {
@@ -34,6 +34,14 @@ public class Order {
         System.out.println(root.data); // Fixed output
         preOrder(root.left);
         preOrder(root.right);
+    }
+    public static void postOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.println(root.data);
     }
 
     public static void main(String[] args) {
@@ -44,5 +52,6 @@ public class Order {
         
         // Corrected method call
         preOrder(root);
+        postOrder(root);
     }
 }
