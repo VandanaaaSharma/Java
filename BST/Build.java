@@ -23,7 +23,19 @@ public class Build {
         }
         return root;
     }
-    
+    public static boolean search(Node root, int key){
+        if(root==null){
+            return false;
+        }
+        if(root.data==key){
+            return true;
+        }
+        if(root.data>key){
+            return search(root.left, key);
+        } else{
+            return search(root.right, key);
+        }
+    }
 
     public static void inorderTraversal(Node root) {
         if (root != null) {
@@ -45,5 +57,13 @@ public class Build {
 
         System.out.println("Inorder traversal of the BST:");
         inorderTraversal(root);
+        
+        
+        int key = 4;
+        if (search(root, key)) {
+            System.out.println(key + " found in BST.");
+        } else {
+            System.out.println(key + " not found in BST.");
+        }
     }
 }
